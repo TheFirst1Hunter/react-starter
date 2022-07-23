@@ -4,7 +4,7 @@
 
 ---
 
-### folder structure
+### 📁 Folder structure
 
 📞 API: where you write your API calls
 <br>
@@ -43,7 +43,7 @@
 
 ---
 
-## folders accessing
+## 📂 Folders accessing
 
 to access any folder type '@' in the import
 
@@ -58,3 +58,19 @@ instead of
 
 <br>
 you can use this syntax with any of the folders and you can add your folders to this convention, just add it to the ts config and vite config files
+
+---
+
+### 🖱 ⌨️ Usage
+
+1- rename the `.env.example` to `.env`
+
+2- get to know the architecture
+
+---
+
+### 🕍 Architecture
+
+-   use either the useFetch hook or create function and put them inside the "API" folder but stick ti either using hooks or writing functions an example of the useFetch
+
+-   always after writing component or a hook or an API, remember to import it in the index file then exporting it
