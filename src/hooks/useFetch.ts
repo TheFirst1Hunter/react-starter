@@ -1,3 +1,5 @@
+/* eslint-disable require-atomic-updates */
+/* eslint-disable complexity */
 import { useEffect, useState } from 'react';
 import { httpClient } from '@lib';
 import { useTokens } from '@hooks';
