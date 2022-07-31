@@ -1,5 +1,3 @@
 import React, { ReactElement } from 'react';
 
-export const MainModal = (): ReactElement => {
-    return <div>Main-modal</div>;
-};
+export const MainModal = (): ReactElement => <div>Main-modal</div>;
