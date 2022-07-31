@@ -9,12 +9,14 @@ interface State<T> {
 }
 
 type RequestType = 'post' | 'get' | 'put' | 'patch' | 'delete';
+type BodyDataType = 'object' | 'formData' | 'nobody';
 
 export function useFetch<ResponseType, BodyType = unknown>(
     url: string,
     requestType: RequestType,
     authentication: boolean,
-    body?: BodyType
+    body?: BodyType,
+    bodyDataType?: BodyDataType
 ): State<ResponseType> {
     const [requestState, setRequestState] = useState<State<ResponseType>>({
         data: null,
@@ -24,6 +26,11 @@ export function useFetch<ResponseType, BodyType = unknown>(
 
     let result: ResponseType;
 
+    if (bodyDataType === 'formData' && !(body instanceof FormData)) {
+        throw Error(
+            'argument "bodyDataType" is set to a formData but received a body of another type'
+        );
+    }
     useEffect(() => {
         (async () => {
             if (authentication) {
@@ -36,11 +43,21 @@ export function useFetch<ResponseType, BodyType = unknown>(
                             },
                         });
                     } else {
-                        result = await httpClient[requestType](url, body, {
-                            headers: {
-                                authorization: `Bearer ${getAccessToken()}`,
-                            },
-                        });
+                        if (bodyDataType === 'object') {
+                            result = await httpClient[requestType](url, body, {
+                                headers: {
+                                    authorization: `Bearer ${getAccessToken()}`,
+                                },
+                            });
+                        }
+                        if (bodyDataType === 'formData') {
+                            result = await httpClient[requestType](url, body, {
+                                headers: {
+                                    authorization: `Bearer ${getAccessToken()}`,
+                                    'Content-Type': `multipart/form-data`,
+                                },
+                            });
+                        }
                     }
 
                     setRequestState({
@@ -62,6 +79,18 @@ export function useFetch<ResponseType, BodyType = unknown>(
                         result = await httpClient[requestType](url);
                     } else {
                         result = await httpClient[requestType](url, body);
+
+                        if (bodyDataType === 'object') {
+                            result = await httpClient[requestType](url, body);
+                        }
+                        // The body is a FormData
+                        if (bodyDataType === 'formData') {
+                            result = await httpClient[requestType](url, body, {
+                                headers: {
+                                    'Content-Type': `multipart/form-data`,
+                                },
+                            });
+                        }
                     }
 
                     setRequestState({
