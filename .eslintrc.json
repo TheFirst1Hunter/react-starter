@@ -74,11 +74,7 @@
         "init-declarations": ["error", "always"],
         "max-classes-per-file": ["warn", 1],
         "max-depth": ["warn", 5],
-        "max-lines": [
-            "warn",
-            400,
-            { "skipBlankLines": true, "skipComments": true }
-        ]
+        "max-lines": ["warn", { "max": 200, "skipComments": true }]
     }
 }
 //"eslint:recommended"
