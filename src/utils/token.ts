@@ -1,3 +1,6 @@
+/**
+ *@returns {function}  getAccessToken(), getRefreshToken(), setAccessToken(), setRefreshToken()
+ */
 export default function tokens() {
     const getAccessToken = (): string | null => {
         const tokenString = localStorage.getItem('access-token');
