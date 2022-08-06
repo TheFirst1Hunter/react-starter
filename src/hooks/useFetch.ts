@@ -11,7 +11,6 @@ interface State<T> {
 }
 
 type RequestType = 'post' | 'get' | 'put' | 'patch' | 'delete';
-type BodyDataType = 'object' | 'formData' | 'nobody';
 
 /**
  * @param {string} url the API endpoint
@@ -26,8 +25,7 @@ export function useFetch<ResponseType, BodyType = unknown>(
     url: string,
     requestType: RequestType,
     authentication: boolean,
-    body?: BodyType,
-    bodyDataType?: BodyDataType
+    body?: BodyType
 ): State<ResponseType> {
     const [requestState, setRequestState] = useState<State<ResponseType>>({
         data: null,
@@ -37,11 +35,6 @@ export function useFetch<ResponseType, BodyType = unknown>(
 
     // eslint-disable-next-line init-declarations
     let result: ResponseType;
-
-    if (bodyDataType === 'formData' && !(body instanceof FormData))
-        throw Error(
-            'argument "bodyDataType" is set to a formData but received a body of another type'
-        );
 
     useEffect(() => {
         (async () => {
@@ -55,14 +48,14 @@ export function useFetch<ResponseType, BodyType = unknown>(
                             },
                         });
                     else {
-                        if (bodyDataType === 'object')
+                        if (!(body instanceof FormData))
                             result = await httpClient[requestType](url, body, {
                                 headers: {
                                     authorization: `Bearer ${getAccessToken()}`,
                                 },
                             });
 
-                        if (bodyDataType === 'formData')
+                        if (body instanceof FormData)
                             result = await httpClient[requestType](url, body, {
                                 headers: {
                                     authorization: `Bearer ${getAccessToken()}`,
@@ -91,11 +84,11 @@ export function useFetch<ResponseType, BodyType = unknown>(
                     else {
                         result = await httpClient[requestType](url, body);
 
-                        if (bodyDataType === 'object')
+                        if (!(body instanceof FormData))
                             result = await httpClient[requestType](url, body);
 
                         // The body is a FormData
-                        if (bodyDataType === 'formData')
+                        if (body instanceof FormData)
                             result = await httpClient[requestType](url, body, {
                                 headers: {
                                     'Content-Type': `multipart/form-data`,
