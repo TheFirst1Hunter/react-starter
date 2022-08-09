@@ -1,10 +1,10 @@
 import React, { ReactElement } from 'react';
-import './Header.style.css';
+import './Header.module.css';
 
 /**
  * @layoutComponent
  * @returns {ReactElement} Header layout component
  */
-const Header = (): ReactElement => <div>header</div>;
+const Header = (): ReactElement => <div className='container'>header</div>;
 
 export default Header;
