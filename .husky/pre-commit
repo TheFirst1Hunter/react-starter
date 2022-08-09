@@ -2,4 +2,10 @@
 . "$(dirname -- "$0")/_/husky.sh"
 
 npx prettier --write ./src/**/*.ts
+npx prettier --write ./src/**/**/*.ts
+npx prettier --write ./src/**/**/*.tsx
+
 npx eslint ./src/**/*.ts
+npx eslint ./src/**/**/*.ts
+npx eslint ./src/**/**/*.tsx
+

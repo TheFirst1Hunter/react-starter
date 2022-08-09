@@ -19,7 +19,7 @@ export default defineConfig({
     resolve: {
         alias: [
             {
-                find: '@components',
+                find: '@components/*',
                 replacement: path.resolve(__dirname, './src/components'),
             },
             {
@@ -30,10 +30,10 @@ export default defineConfig({
                 find: '@types',
                 replacement: path.resolve(__dirname, './src/types'),
             },
-            {
-                find: '@pages',
-                replacement: path.resolve(__dirname, './src/pages'),
-            },
+            // C{
+            //  C   find: '@pages',
+            //   C  replacement: path.resolve(__dirname, './src/pages'),
+            // },
             {
                 find: '@atoms',
                 replacement: path.resolve(__dirname, './src/atoms'),
@@ -50,14 +50,14 @@ export default defineConfig({
                 find: '@context',
                 replacement: path.resolve(__dirname, './src/context'),
             },
-            {
-                find: '@forms',
-                replacement: path.resolve(__dirname, './src/forms'),
-            },
-            {
-                find: '@layout',
-                replacement: path.resolve(__dirname, './src/layout'),
-            },
+            // {
+            // C    find: '@forms',
+            //  C   replacement: path.resolve(__dirname, './src/forms'),
+            // },
+            // C{
+            //  C   find: '@layout',
+            //   C  replacement: path.resolve(__dirname, './src/layout'),
+            // },
             {
                 find: '@lib',
                 replacement: path.resolve(__dirname, './src/lib'),

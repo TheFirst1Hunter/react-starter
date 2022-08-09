@@ -1,3 +1,4 @@
-import Button from './Button';
+import { Button } from './common';
+import { LoginForm } from './forms';
 
-export { Button };
+export { Button, LoginForm };
