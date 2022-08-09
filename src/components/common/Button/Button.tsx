@@ -1,7 +1,8 @@
 import React, { ReactElement } from 'react';
-import { ButtonProps } from './types';
-import './style.module.css';
+import { ButtonProps } from './Button.types';
+import './Button.module.css';
 /**
+ * @commonComponent
  * @param {ButtonProps} props props of the button component
  * @returns {ReactElement} Button component
  */

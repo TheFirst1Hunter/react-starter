@@ -18,14 +18,15 @@
         "paths": {
             "@utils": ["./src/utils"],
             "@components": ["./src/components"],
+            "@components/*": ["./src/components/*"],
             "@types": ["./src/types"],
-            "@pages": ["./src/pages"],
+            // "@pages": ["./src/pages"],
             "@atoms": ["./src/atoms"],
             "@API": ["./src/API"],
             "@context": ["./src/context"],
             "@assets": ["./src/assets"],
-            "@forms": ["./src/forms"],
-            "@layout": ["./src/layout"],
+            // "@forms": ["./src/components/forms"],
+            // "@layout": ["./src/components/layout"],
             "@lib": ["./src/lib"],
             "@hooks": ["./src/hooks"]
         }

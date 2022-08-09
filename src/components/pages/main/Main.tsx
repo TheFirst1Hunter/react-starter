@@ -1,8 +1,8 @@
 import React, { ReactElement } from 'react';
-import './style.module.css';
+import './Main.module.css';
 
 /**
- * @component
+ * @pagesComponent
  * @return  {ReactElement} returns the main page
  */
 const Main = (): ReactElement => <div>Main</div>;
