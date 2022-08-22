@@ -1,6 +1,6 @@
 import React, { ReactElement } from 'react';
 import { ButtonProps } from './Button.types';
-import './Button.module.css';
+import styles from './Button.module.css';
 /**
  * @commonComponent
  * @param {ButtonProps} props props of the button component

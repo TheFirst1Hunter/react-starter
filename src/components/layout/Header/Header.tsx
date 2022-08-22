@@ -1,5 +1,5 @@
 import React, { ReactElement } from 'react';
-import './Header.module.css';
+import styles from './Header.module.css';
 
 /**
  * @layoutComponent

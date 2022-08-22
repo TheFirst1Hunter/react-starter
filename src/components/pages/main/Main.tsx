@@ -1,5 +1,5 @@
 import React, { ReactElement } from 'react';
-import './Main.module.css';
+import styles from './Main.module.css';
 
 /**
  * @pagesComponent
