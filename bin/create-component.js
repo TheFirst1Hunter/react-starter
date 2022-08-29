@@ -3,10 +3,13 @@
 import inquirer from 'inquirer';
 import fs from 'fs';
 import path from 'path';
+import chalk from 'chalk';
 import { fileURLToPath } from 'url';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
+
+console.log(chalk.cyanBright('creating your component'));
 
 const prompt = await inquirer.createPromptModule();
 
@@ -68,14 +71,25 @@ fs.mkdirSync(
         `../src/components/${componentType}/${componentNameUppercase}`
     )
 );
-const p = path.resolve(
+const resolvedPath = path.resolve(
     __dirname,
     `../src/components/${componentType}/${componentNameUppercase}`
 );
 
-fs.writeFileSync(`${p}/index.ts`, indexFile);
-fs.writeFileSync(`${p}/${componentNameUppercase}.tsx`, componentFile);
-fs.writeFileSync(`${p}/${componentNameUppercase}.module.css`, '');
-fs.writeFileSync(`${p}/${componentNameUppercase}.spec.ts`, specFile);
-fs.writeFileSync(`${p}/${componentNameUppercase}.story.tsx`, storyFile);
-fs.writeFileSync(`${p}/${componentNameUppercase}.types.ts`, interfaceFile);
+fs.writeFileSync(`${resolvedPath}/index.ts`, indexFile);
+fs.writeFileSync(
+    `${resolvedPath}/${componentNameUppercase}.tsx`,
+    componentFile
+);
+fs.writeFileSync(`${resolvedPath}/${componentNameUppercase}.module.css`, '');
+fs.writeFileSync(`${resolvedPath}/${componentNameUppercase}.spec.ts`, specFile);
+fs.writeFileSync(
+    `${resolvedPath}/${componentNameUppercase}.story.tsx`,
+    storyFile
+);
+fs.writeFileSync(
+    `${resolvedPath}/${componentNameUppercase}.types.ts`,
+    interfaceFile
+);
+
+console.log(chalk.cyanBright('your component is ready to use!'));
