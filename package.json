@@ -8,7 +8,8 @@
         "build": "tsc && vite build",
         "preview": "vite preview",
         "storybook": "start-storybook -p 6006",
-        "build-storybook": "build-storybook"
+        "build-storybook": "build-storybook",
+        "cc": "node bin/create-component"
     },
     "dependencies": {
         "axios": "^0.27.2",
@@ -33,12 +34,14 @@
         "@typescript-eslint/parser": "^5.30.6",
         "@vitejs/plugin-react": "^2.0.0",
         "babel-loader": "^8.2.5",
+        "chalk": "^5.0.1",
         "eslint": "^8.20.0",
         "eslint-config-google": "^0.14.0",
         "eslint-config-prettier": "^8.5.0",
         "eslint-plugin-react": "^7.30.1",
         "eslint-plugin-storybook": "^0.6.4",
         "husky": "^8.0.1",
+        "inquirer": "^9.1.0",
         "prettier": "2.7.1",
         "storybook-css-modules": "^1.0.8",
         "typescript": "^4.6.4",
