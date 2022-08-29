@@ -1,0 +1,11 @@
+import React from 'react';
+import { ComponentMeta } from '@storybook/react';
+import temp from './temp';
+import { tempProps } from './temp.types';
+
+export default {
+    title: 'temp',
+    component: temp,
+} as ComponentMeta<typeof temp>;
+
+export const Primary = (args: tempProps) => <temp {...args} />;
